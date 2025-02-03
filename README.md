@@ -268,7 +268,6 @@ Let me know if you need more details on any part! 🚀
 - What is a React component?
   - A reusable piece of UI.
 - Creating a functional component
-  - Example: `Welcome` or `HelloWorld` component.
   - Basic syntax and structure.
 - Rendering a component in the `App.jsx`.
 
@@ -278,16 +277,22 @@ Let me know if you need more details on any part! 🚀
 
 ### Introduction to JSX
 
+TBD
+
 [Back to top](#2025-03-02---intro-till-react)
 
 ---
 
 ### Building the First Application
 
+In the test folder in this repo, you can find the application we built with React. There we introduce how to create components, import/export syntax, import styling and general project structure.
+
 [Back to top](#2025-03-02---intro-till-react)
 
 ---
 
 ### Debugging Basics
+
+TBD
 
 [Back to top](#2025-03-02---intro-till-react)

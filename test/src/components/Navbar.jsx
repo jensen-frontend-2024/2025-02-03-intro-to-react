@@ -1,3 +1,5 @@
+import { Button } from './Button';
+
 // We can also write and use an arrow function istead of the fuction keyword and export it has a named variable.
 export const Navbar = () => {
   const logo = 'The Super Application';
@@ -32,6 +34,7 @@ export const Navbar = () => {
             </span>
           );
         })}
+        <Button />
       </div>
     </nav>
   );
