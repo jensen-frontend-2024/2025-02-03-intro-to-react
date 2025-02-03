@@ -2,5 +2,7 @@
 // The import statement will look like this: import { App } from 'path to file'
 
 export function Footer() {
-  return <footer className="footer">This is the footer</footer>;
+  const footerText = 'This is the footer';
+
+  return <footer className="footer">{footerText}</footer>;
 }

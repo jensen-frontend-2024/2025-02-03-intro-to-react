@@ -2,5 +2,7 @@
 // The import statmenet will look like this: import App from 'path to file'
 
 export default function MainContent() {
-  return <h1 className="header">This is the main content of the Application</h1>;
+  const content = 'This is the main content of the Application';
+
+  return <h1 className="header">{content}</h1>;
 }
