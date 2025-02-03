@@ -1,0 +1,9 @@
+/* This file is usually reserved for global styling, fonts, colors etc. */
+@import url('./App.css');
+
+/* The star selector has 0 in specificity and can be used for default styling across the elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
