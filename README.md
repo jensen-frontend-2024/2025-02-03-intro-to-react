@@ -6,6 +6,15 @@
 - [What is React?](#what-is-react)
 - [Global usage](#global-usage)
 - [Key Features](#key-features)
+- [Setting Up a React Application with Vite.js](#setting-up-a-react-application-with-vitejs)
+
+  - [Project Structure](#project-structure)
+  - [Key Files Explained](#key-files-explained)
+  - [Summary](#Summary)
+
+- [Writing Your First React Component](#writing-your-first-react-component)
+- [Introduction to JSX](#introduction-to-jsx)
+- [Debugging Basics](#debugging-basics)
 
 </details>
 
@@ -53,26 +62,28 @@ Here’s a list of React’s **key features**:
 
    - [Article - Declarative vs. Imperative Programming: 4 Key Differences ](https://codefresh.io/learn/infrastructure-as-code/declarative-vs-imperative-programming-4-key-differences/)
 
-   - Short code example:
+   - Short code example
 
    Declarative _( React )_
 
-   ```js
-   const App = () => <button onClick={() => alert('Button clicked!')}>Click Me</button>;
-   ```
+   ```jsx
+   const App => () => <button onClick={() => console.log("Btn has been clicked")}>Click me</button>
+   ``` 
 
-   You describe what the button should do, and React takes care of rendering and handling updates.
+   You describe what the button should do, and React takes care of rendering and handling all the updates.
 
-   Imperative _( Vanilla JavaScript )_
+   Imperative _( Vanilla JS )_
 
    ```js
    const button = document.createElement('button');
-   button.innerText = 'Click Me';
-   button.addEventListener('click', () => alert('Button clicked!'));
-   document.body.appendChild(button);
-   ```
+   button.innerText = 'Click me';
+   
+   button.addEventListener('click', () => {
+    console.log("Btn has been clicked");
+   });
 
-   You provide **step-by-step** instructions to create and manage the button manually.
+   document.body.append(button);
+   ```
 
 3. **Virtual DOM**
 
@@ -122,18 +133,22 @@ Here’s a list of React’s **key features**:
 
 ---
 
-### **2. Setting Up a React Application with Vite.js**
+### Setting Up a React Application with Vite.js
 
-When you create a new **Vite** project using the React template with:  
+When you create a new **Vite** project using the React template with:
 
 ```bash
-npm create vite@latest my-app --template react
+npm create vite@latest [my-app]
 ```
+
+You switch out the text in the square brackets to a name of your own choosing.
+
 You get the following **starting files and folders**:
 
----
+[Back to top](#2025-03-02---intro-till-react)
 
-#### **Project Structure**
+#### Project Structure
+
 ```
 my-app/
 │── node_modules/         # Installed dependencies
@@ -152,23 +167,25 @@ my-app/
 │── README.md             # Project documentation
 ```
 
----
-
-#### **Key Files Explained**
+#### Key Files Explained
 
 ##### **1. `index.html` (Main HTML file)**
+
 - The root **HTML file** that loads the React app.
 - Contains:
   ```html
   <body>
-    <div id="root"></div> <!-- React mounts here -->
+    <div id="root"></div>
+    <!-- React mounts here -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
   ```
 
 ##### **2. `src/main.jsx` (Entry Point)**
+
 - The first file executed by Vite.
 - Mounts React into the `#root` div in `index.html`:
+
   ```jsx
   import React from 'react';
   import ReactDOM from 'react-dom/client';
@@ -183,7 +200,9 @@ my-app/
   ```
 
 ##### **3. `src/App.jsx` (Main Component)**
+
 - The default **React component** you see when running the project:
+
   ```jsx
   function App() {
     return (
@@ -197,13 +216,16 @@ my-app/
   ```
 
 ##### **4. `src/index.css` & `src/App.css` (CSS Styles)**
+
 - `index.css` → Global styles.
 - `App.css` → Styles specific to `App.jsx`.
 
 ##### **5. `vite.config.js` (Vite Configuration)**
+
 - Configuration for Vite, such as aliases, plugins, and optimizations.
 
 ##### **6. `package.json` (Project Dependencies)**
+
 - Lists dependencies like `react` and `react-dom`:
   ```json
   "dependencies": {
@@ -221,23 +243,27 @@ my-app/
   ```
 
 ##### **7. `public/` (Static Assets)**
+
 - Any files here (e.g., images, fonts) **won’t be processed by Vite** and can be accessed directly, e.g., `/logo.png`.
 
----
+[Back to top](#2025-03-02---intro-till-react)
 
-#### **Summary**
-- **`index.html`** → Loads the app, includes `#root`.  
-- **`main.jsx`** → Entry point, renders React into `#root`.  
-- **`App.jsx`** → Main component of the app.  
-- **CSS files** → `index.css` (global styles), `App.css` (component styles).  
-- **`vite.config.js`** → Configures Vite (optional).  
-- **`public/`** → Stores static assets.  
+#### Summary
+
+- **`index.html`** → Loads the app, includes `#root`.
+- **`main.jsx`** → Entry point, renders React into `#root`.
+- **`App.jsx`** → Main component of the app.
+- **CSS files** → `index.css` (global styles), `App.css` (component styles).
+- **`vite.config.js`** → Configures Vite (optional).
+- **`public/`** → Stores static assets.
 
 Let me know if you need more details on any part! 🚀
 
+[Back to top](#2025-03-02---intro-till-react)
+
 ---
 
-### **3. Writing Your First React Component**
+### Writing Your First React Component
 
 - What is a React component?
   - A reusable piece of UI.
@@ -246,151 +272,22 @@ Let me know if you need more details on any part! 🚀
   - Basic syntax and structure.
 - Rendering a component in the `App.jsx`.
 
----
-
-### **4. Introduction to JSX**
-
-- What is JSX?
-
-  - JavaScript XML – a syntax extension for writing HTML in JavaScript.
-
-  ```jsx
-  <h1 className="header">Hello, React!</h1>
-  ```
-
-  Writing this is the equivalent to writing this in in vanilla Javascript:
-
-  ```js
-  const h1: HTMLElement = document.createElemnent('h1');
-  h1.classList.add('header');
-  h1.innerText = 'Hello React!';
-  document.body.append(h1);
-  ```
-
-- Why JSX is used in React.
-
-  JSX makes React code more readable by allowing HTML-like syntax in JavaScript. It compiles to React.createElement(), optimizing DOM updates for better performance.
-
-  Corresponding content written with React.createElement:
-
-  ```jsx
-  const h1: ReactElement = React.createElement('h1', null, 'Hello, React!');
-  ```
-
-  Syntax:
-
-  ```
-  React.createElement(type, props, ...children)
-  ```
-
-  Where the parameters are:
-
-  1. type (string | React Component)
-
-     - The type of the element to create.
-     - Can be a string (for native HTML elements like "div", "p", "button") or a React component.
-
-  2. props (object | null)
-
-     - An object containing attributes and properties for the element (e.g., { className: "my-class", id: "unique" }).
-     - If there are no props, pass null.
-
-  3. ...children (React elements, strings, or arrays)
-
-     - The content inside the element.
-     - Can be:
-       - A string ("Hello World")
-       - Another React element (React.createElement("p", null "Text"))
-       - An array of multiple React elements ([element1, element2])
-
-Slightly more complex example with React.createElement compared to JSX:
-
-JSX:
-
-```jsx
-const App = () => (
-  <section id="section">
-    <article className="image-card">
-      <img src="image1.jpg" alt="First" />
-      <p>First article text</p>
-      <button className="btn" disabled type="button">
-        Read More
-      </button>
-    </article>
-    <article className="image-card">
-      <img src="image2.jpg" alt="Second" />
-      <p>Second article text</p>
-      <button className="btn" disabled type="button">
-        Read More
-      </button>
-    </article>
-  </section>
-);
-```
-
-React.createElement
-
-```js
-const App = () =>
-  React.createElement(
-    'section',
-    { id: 'section' },
-    React.createElement(
-      'article',
-      { className: 'image-card' },
-      React.createElement('img', { src: 'image1.jpg', alt: 'First' }),
-      React.createElement('p', null, 'First article text'),
-      React.createElement(
-        'button',
-        { className: 'btn', disabled: true, type: 'button' },
-        'Read More'
-      )
-    ),
-    React.createElement(
-      'article',
-      { className: 'image-card' },
-      React.createElement('img', { src: 'image2.jpg', alt: 'Second' }),
-      React.createElement('p', null, 'Second article text'),
-      React.createElement(
-        'button',
-        { className: 'btn', disabled: true, type: 'button' },
-        'Read More'
-      )
-    )
-  );
-```
-
-- Rules of JSX
-  - JSX must have a single parent element.
-  - Using `{}` for embedding expressions.
-  - JSX syntax is stricter than HTML (e.g., self-closing tags, camelCase attributes like `className`).
+[Back to top](#2025-03-02---intro-till-react)
 
 ---
 
-### **5. Building the First Application**
+### Introduction to JSX
 
-- Creating a basic React application:
-  - Displaying a welcome message.
-  - Structuring basic components like a header, footer, or a main section.
-- Demonstrating live reload and editing components.
+[Back to top](#2025-03-02---intro-till-react)
 
 ---
 
-### **6. Debugging Basics**
+### Building the First Application
 
-- Using the browser console for debugging.
-- Introduction to React Developer Tools (optional, brief mention).
-
----
-
-### **7. Wrap-Up and Questions**
-
-- Recap the key points:
-  - What React is.
-  - The role of components and JSX.
-  - How to create and render a basic React application.
-- Open the floor for student questions.
+[Back to top](#2025-03-02---intro-till-react)
 
 ---
 
-Would you like detailed examples or any specific emphasis, like setup instructions or code snippets for these sections?
+### Debugging Basics
+
+[Back to top](#2025-03-02---intro-till-react)
