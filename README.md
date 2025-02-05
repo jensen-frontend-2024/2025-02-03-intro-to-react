@@ -68,7 +68,7 @@ Here’s a list of React’s **key features**:
 
    ```jsx
    const App => () => <button onClick={() => console.log("Btn has been clicked")}>Click me</button>
-   ``` 
+   ```
 
    You describe what the button should do, and React takes care of rendering and handling all the updates.
 
@@ -77,9 +77,9 @@ Here’s a list of React’s **key features**:
    ```js
    const button = document.createElement('button');
    button.innerText = 'Click me';
-   
+
    button.addEventListener('click', () => {
-    console.log("Btn has been clicked");
+     console.log('Btn has been clicked');
    });
 
    document.body.append(button);
@@ -277,7 +277,120 @@ Let me know if you need more details on any part! 🚀
 
 ### Introduction to JSX
 
-TBD
+- What is JSX?
+
+  - JavaScript XML – a syntax extension for writing HTML in JavaScript.
+
+  ```jsx
+  <h1 className="header">Hello, React!</h1>
+  ```
+
+  Writing this is the equivalent to writing this in in vanilla Javascript:
+
+  ```js
+  const h1: HTMLElement = document.createElemnent('h1');
+  h1.classList.add('header');
+  h1.innerText = 'Hello React!';
+  document.body.append(h1);
+  ```
+
+- Why JSX is used in React.
+
+  JSX makes React code more readable by allowing HTML-like syntax in JavaScript. You don't have to write JSX, you could use the "original way" of creating the template. It is something alled React.CreateComponent which is a function that takes fom information that React uses behind the scenes to create HTML. But, JSX is easier and it compiles to React.createElement() by the React ecosystem, optimizing DOM updates for better performance.
+
+  Corresponding content written with React.createElement:
+
+  ```jsx
+  const h1: ReactElement = React.createElement('h1', null, 'Hello, React!');
+  ```
+
+  Syntax:
+
+  ```
+  React.createElement(type, props, ...children)
+  ```
+
+  Where the parameters are:
+
+  1. type (string | React Component)
+
+     - The type of the element to create.
+     - Can be a string (for native HTML elements like "div", "p", "button") or a React component.
+
+  2. props (object | null)
+
+     - An object containing attributes and properties for the element (e.g., { className: "my-class", id: "unique" }).
+     - If there are no props, pass null.
+
+  3. ...children (React elements, strings, or arrays)
+
+     - The content inside the element.
+     - Can be:
+       - A string ("Hello World")
+       - Another React element (React.createElement("p", null "Text"))
+       - An array of multiple React elements ([element1, element2])
+
+Slightly more complex example with React.createElement compared to JSX:
+
+JSX:
+
+```jsx
+const App = () => (
+  <section id="section">
+    <article className="image-card">
+      <img src="image1.jpg" alt="First" />
+      <p>First article text</p>
+      <button className="btn" disabled type="button">
+        Read More
+      </button>
+    </article>
+    <article className="image-card">
+      <img src="image2.jpg" alt="Second" />
+      <p>Second article text</p>
+      <button className="btn" disabled type="button">
+        Read More
+      </button>
+    </article>
+  </section>
+);
+```
+
+React.createElement
+
+```js
+const App = () =>
+  React.createElement(
+    'section',
+    { id: 'section' },
+    React.createElement(
+      'article',
+      { className: 'image-card' },
+      React.createElement('img', { src: 'image1.jpg', alt: 'First' }),
+      React.createElement('p', null, 'First article text'),
+      React.createElement(
+        'button',
+        { className: 'btn', disabled: true, type: 'button' },
+        'Read More'
+      )
+    ),
+    React.createElement(
+      'article',
+      { className: 'image-card' },
+      React.createElement('img', { src: 'image2.jpg', alt: 'Second' }),
+      React.createElement('p', null, 'Second article text'),
+      React.createElement(
+        'button',
+        { className: 'btn', disabled: true, type: 'button' },
+        'Read More'
+      )
+    )
+  );
+```
+
+- Rules of JSX
+  - JSX must have a single parent element.
+  - Using `{}` for embedding expressions.
+  - JSX syntax is stricter than HTML (e.g., self-closing tags, camelCase attributes like `className`).
 
 [Back to top](#2025-03-02---intro-till-react)
 
